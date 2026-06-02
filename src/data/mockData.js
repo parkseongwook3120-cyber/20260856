@@ -114,6 +114,10 @@ export const savedRoutesList = [
   mockRoutes[2]
 ];
 
+export const likedPostsList = [
+  socialPosts[0]
+];
+
 export const userInfo = {
   id: 'user1',
   nickname: '통학러',
