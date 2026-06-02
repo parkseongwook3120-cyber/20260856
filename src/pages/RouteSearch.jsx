@@ -82,7 +82,7 @@ export default function RouteSearch() {
               {selectedRoute.totalTime}분 소요
             </h2>
             <p className="text-sm text-gray-500 font-semibold mb-6">
-              예상 교통비 {selectedRoute.cost.toLocaleString()}원 • 도착 예정 {new Date(Date.now() + selectedRoute.totalTime * 60000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+              예상 교통비 {selectedRoute.cost.toLocaleString()}원 • 약 {selectedRoute.totalTime}분 후 도착
             </p>
             
             <div className="space-y-6 relative before:absolute before:inset-y-0 before:left-[11px] before:w-0.5 before:bg-gray-200 pl-8">

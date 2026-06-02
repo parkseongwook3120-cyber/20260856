@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
-import { Compass, LocateFixed, Navigation, Sun } from 'lucide-react';
+import { Compass, LocateFixed, Navigation, Sun, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
