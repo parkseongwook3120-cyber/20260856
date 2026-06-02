@@ -6,10 +6,21 @@ import { Sparkles } from 'lucide-react';
 
 export default function Social() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState('latest');
 
   const filteredPosts = socialPosts.filter(post => 
     post.schoolName.includes(searchQuery) || post.departure.includes(searchQuery)
   );
+
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (sortOrder === 'likes_desc') {
+      return b.likes - a.likes;
+    } else if (sortOrder === 'likes_asc') {
+      return a.likes - b.likes;
+    }
+    // latest default
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
 
   return (
     <div className="min-h-screen bg-[#f4f3ec] pb-24">
@@ -34,10 +45,22 @@ export default function Social() {
 
       {/* 피드 목록 */}
       <div className="px-4 mt-6">
-        {filteredPosts.map(post => (
+        <div className="flex justify-end mb-4">
+          <select 
+            value={sortOrder} 
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="bg-white border border-gray-100 text-gray-700 text-sm rounded-xl focus:ring-purple-500 focus:border-purple-500 block px-3 py-2 outline-none font-semibold shadow-sm appearance-none cursor-pointer"
+          >
+            <option value="latest">최신순</option>
+            <option value="likes_desc">좋아요 많은 순</option>
+            <option value="likes_asc">좋아요 적은 순</option>
+          </select>
+        </div>
+        
+        {sortedPosts.map(post => (
           <SocialPost key={post.id} post={post} />
         ))}
-        {filteredPosts.length === 0 && (
+        {sortedPosts.length === 0 && (
           <div className="text-center py-20 text-gray-500 font-semibold">
             검색 결과가 없습니다.
           </div>
