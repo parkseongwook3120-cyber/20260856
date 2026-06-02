@@ -99,7 +99,7 @@ export default function RouteSearch() {
 
       {/* 실시간 경로 상세 바텀 시트 (Mock) */}
       {selectedRoute && (
-        <div className="fixed inset-0 z-50 bg-black/40 flex items-end justify-center" onClick={() => setSelectedRoute(null)}>
+        <div className="fixed inset-0 z-[60] bg-black/40 flex items-end justify-center" onClick={() => setSelectedRoute(null)}>
           <div 
             className="w-full max-w-md bg-white rounded-t-3xl p-6 transform transition-transform" 
             onClick={e => e.stopPropagation()}
