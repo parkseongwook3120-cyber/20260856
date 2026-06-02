@@ -8,6 +8,7 @@ export const schools = [
 export const mockRoutes = [
   {
     id: 1,
+    destination: '동서대학교',
     type: 'fast',
     transportation: 'bus',
     totalTime: 45,
@@ -26,6 +27,7 @@ export const mockRoutes = [
   },
   {
     id: 2,
+    destination: '동서대학교',
     type: 'save',
     transportation: 'subway',
     totalTime: 55,
@@ -44,6 +46,7 @@ export const mockRoutes = [
   },
   {
     id: 3,
+    destination: '동서대학교',
     type: 'fast',
     transportation: 'subway',
     totalTime: 40,
@@ -57,6 +60,25 @@ export const mockRoutes = [
     ],
     rating: 4.9,
     reviews: 200,
+    weather: 'sunny',
+    timeZone: 'morning',
+  },
+  {
+    id: 4,
+    destination: '부산대학교',
+    type: 'fast',
+    transportation: 'subway',
+    totalTime: 50,
+    cost: 1400,
+    congestion: 'high',
+    safety: 'high',
+    steps: [
+      { type: 'walk', description: '집에서 출발', time: 5 },
+      { type: 'subway', description: '1호선 서면역 탑승 -> 부산대역 하차', time: 35 },
+      { type: 'walk', description: '부산대학교 도착', time: 10 },
+    ],
+    rating: 4.7,
+    reviews: 150,
     weather: 'sunny',
     timeZone: 'morning',
   }

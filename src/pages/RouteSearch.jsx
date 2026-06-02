@@ -12,10 +12,37 @@ export default function RouteSearch() {
   const [transportMode, setTransportMode] = useState('all'); // 'all', 'bus', 'subway'
   const [selectedRoute, setSelectedRoute] = useState(null);
 
-  const filteredRoutes = mockRoutes.filter(route => {
+  let filteredRoutes = mockRoutes.filter(route => {
+    const matchQuery = query ? route.destination?.includes(query) : true;
+    if (!matchQuery) return false;
+
     if (transportMode === 'all') return true;
     return route.transportation === transportMode;
   });
+
+  if (filteredRoutes.length === 0 && query) {
+    filteredRoutes = [
+      {
+        id: 999,
+        destination: query,
+        type: 'fast',
+        transportation: transportMode === 'all' ? 'bus' : transportMode,
+        totalTime: 40,
+        cost: 1500,
+        congestion: 'medium',
+        safety: 'high',
+        steps: [
+          { type: 'walk', description: '집에서 출발', time: 5 },
+          { type: transportMode === 'subway' ? 'subway' : 'bus', description: '대중교통 탑승', time: 25 },
+          { type: 'walk', description: `${query} 도착`, time: 10 },
+        ],
+        rating: 4.5,
+        reviews: 10,
+        weather: 'sunny',
+        timeZone: 'morning',
+      }
+    ];
+  }
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 pb-16">
